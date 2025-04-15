@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"="width=device-width, initial-scale=1.0">
+    <title>UTS Multimedia - Aryo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Custom CSS */
+        body {
+            background-color: #f8f9fa;
+            line-height: 1.6;
+        }
+
+
+        .nav-container {
+            max-width: 100%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2rem;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        main {
+            margin-top: 80px;
+            padding: 2rem 5%;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h2 {
+            color: #2d3436;
+            border-bottom: 3px solid #0984e3;
+            padding-bottom: 0.5rem;
+            margin: 3rem 0 1.5rem;
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .media-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: transform 0.2s;
+        }
+
+        .media-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .media-content {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .text-content {
+            padding: 1rem;
+            background: #f1f3f5;
+            border-radius: 8px;
+            min-height: 200px;
+        }
+
+        .caption {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #636e72;
+            line-height: 1.5;
+        }
+
+        .download-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.8rem 1.5rem;
+            background-color: #0984e3;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.3s;
+        }
+
+        .download-btn:hover {
+            background-color: #0871c0;
+        }
+
+        #inter {
+            font-family: "Times New Roman", serif;
+        }
+
+        #roboto {
+            font-family: 'Roboto', sans-serif;
+        }
+        #arial{
+            font-family: Arial, sans-serif;
+        }
+        #navbar{
+            z-index: 1000;
+        }
+        /* Navigation */
+nav {
+  background: var(--bg-color);
+  padding: 1.5rem 5%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-left: 162px;
+  color: var(--primary-color);
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  margin-right: 145px;
+}
+
+.nav-links a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  background: #f8f9fa;
+  color: var(--accent-color);
+}
+
+
+        
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <div class="logo">ARYO</div>
+        <ul class="nav-links">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#projects">Projects</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+      </nav>
+
+    <div class="container">
+        <nav>
+      <div class="logo">ARYO</div>
+      <ul class="nav-links">
+        <li><a href="index.html#home">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+    </nav>
+    
+
+    <main>
+        <!-- Teks -->
+        <section id="teks">
+            <h2>Contoh Teks</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <div class="text-content" id="inter">
+                        <h3>Times New Roman</h3>
+                        <p class="caption">
+                            <strong>Font:</strong> Times New Roman<br>
+                            Contoh kombinasi heading dan body text dengan spacing yang konsisten
+                        </p>
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="text-content" id="arial">
+                        <h3>Arial</h3>
+                        <p class="caption">
+                            <strong>Font:</strong> Arial<br>
+                            Gaya sans-serif klasik dan bersih<br>
+                            Mudah dibaca di berbagai ukuran layar<br>
+                            Umum digunakan untuk tampilan formal dan profesional
+                          </p>
+                          
+                    </div>
+                </div>
+
+                <div class="media-card">
+                    <div class="text-content" id="roboto">
+                        <h3>Roboto</h3>
+                        <p class="caption">
+                            <strong>Font:</strong> Roboto<br>
+                            Kombinasi teks dengan ikon visual<br>
+                            Penggunaan bullet points dan numbering<br>
+                            Kontras warna untuk emphasis
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gambar -->
+        <section id="gambar">
+            <h2>Gambar</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <img src="img/sample_640×426.jpeg" class="media-content" alt="JPEG Example">
+                    <p class="caption">
+                        <strong>JPEG</strong><br>
+                        Kualitas: 80%<br>
+                        Ukuran: 150KB<br>
+                        Resolusi: 640x426px
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <img src="img/peci.png" class="media-content" alt="PNG Example">
+                    <p class="caption">
+                        <strong>PNG-24</strong><br>
+                        Transparansi: Alpha Channel<br>
+                        Ukuran: 450KB<br>
+                        Cocok untuk grafik vektor
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" alt="Contoh GIF" class="media-content" alt="GIF Example">
+                    <p class="caption">
+                        <strong>GIF</strong><br>
+                        Transparansi: 1-bit (On/Off)<br>
+                        Ukuran: 350KB<br>
+                        Cocok untuk animasi ringan dan ikon
+                      </p>
+                      
+                </div>
+            </div>
+        </section>
+
+        <!-- Video -->
+        <section id="video">
+            <h2>Video</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <video controls class="media-content">
+                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"
+                            type="video/mp4">
+                    </video>
+                    <p class="caption">
+                        <strong>MP4</strong><br>
+                        Codec: H.264<br>
+                        Durasi: 30 detik<br>
+                        Bitrate: 2Mbps
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <video controls class="media-content">
+                        <source
+                            src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/04/file_example_AVI_480_750kB.avi"
+                            type="video/avi">
+                    </video>
+                    <p class="caption">
+                        <strong>AVI</strong><br>
+                        Codec: XviD<br>
+                        Ukuran: 750KB<br>
+                        Resolusi: 640x480px
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <video controls class="media-content">
+                        <source src="https://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
+                    </video>
+                    <p class="caption">
+                        <strong>WebM</strong><br>
+                        Codec: VP9 / Opus<br>
+                        Ukuran: 1.5MB<br>
+                        Resolusi: 640x360px
+                      </p>
+                      
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Audio -->
+        <section id="audio">
+            <h2>Audio</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <audio controls class="media-content">
+                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+                    </audio>
+                    <p class="caption">
+                        <strong>MP3</strong><br>
+                        Bitrate: 128kbps<br>
+                        Durasi: 1:30 menit<br>
+                        Frekuensi: 44.1kHz
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <audio controls class="media-content">
+                        <source
+                            src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_WAV_1MG.wav"
+                            type="audio/wav">
+                    </audio>
+                    <p class="caption">
+                        <strong>WAV</strong><br>
+                        Format: PCM<br>
+                        Ukuran: 1MB<br>
+                        Kualitas: CD Audio
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <audio controls class="media-content">
+                        <!-- Tambahkan type yang lebih spesifik untuk AAC -->
+                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_AAC_2MG.m4a" 
+                                type="audio/aac">
+                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_AAC_2MG.m4a" 
+                                type="audio/mp4"> <!-- Fallback untuk browser tertentu -->
+                        Browser tidak mendukung format AAC
+                    </audio>
+                    <p class="caption">
+                        <strong>AAC (Advanced Audio Coding)</strong><br>
+                        <span class="tech-detail">
+                            Format: MPEG-4 AAC LC<br>
+                            Bitrate: 128 kbps<br>
+                            Sample Rate: 44.1 kHz<br>
+                            Durasi: 30 detik<br>
+                            Ukuran: 2 MB
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animasi -->
+        <section id="animasi">
+            <h2>Animasi</h2>
+            <div class="media-grid">
+                <div class="media-card">
+                    <img src="img/Toy Story.webp" class="media-content" alt="Toy Story Poster">
+                    <p class="caption">
+                        <strong>Toy Story</strong><br>
+                        Format: CGI 3D<br>
+                        Studio: Pixar<br>
+                        Tahun: 1995
+                    </p>
+                </div>
+
+                <div class="media-card">
+                    <img src="img/frozen.jpeg" class="media-content" alt="Frozen Poster">
+                    <p class="caption">
+                        <strong>Frozen</strong><br>
+                        Format: CGI 3D<br>
+                        Studio: Disney<br>
+                        Teknologi: Snow Simulation
+                    </p>
+                </div>
+                <div class="media-card">
+                    <img src="img/naruto.jpeg" class="media-content" alt="Naruto Poster">
+                    <p class="caption">
+                        <strong>Naruto</strong><br>
+                        Format: 2D Animation<br>
+                        Studio: Studio Pierrot<br>
+                        Teknologi: Traditional Hand-drawn & Digital Ink and Paint
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Download Section -->
+        <section style="text-align: center; margin: 4rem 0;">
+            <a href="file/Laporan UTS Multimedia.pdf" download class="download-btn">
+                📥 Unduh Laporan Lengkap (PDF)
+            </a>
+        </section>
+    </main>
+
+    <!-- <footer>
+        <p>&copy; 2025 Aryo Abi Putra - UTS Multimedia</p>
+    </footer> -->
+    <footer>
+        <div class="footer-content">
+          <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+          </div>
+          <p>&copy; 2025 Aryo Abi Putra. All rights reserved.</p>
+        </div>
+      </footer>
+</body>
+
+</html>
