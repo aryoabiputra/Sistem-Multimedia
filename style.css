@@ -81,6 +81,7 @@ main {
   gap: 3rem;
   min-height: 100vh;
   transform: translateY(-90px);
+  margin-top: -50px;
 }
 
 .hero-content {
@@ -102,7 +103,8 @@ main {
 .hero-img {
   width: 50%;
   height: auto;
-  margin-top: -80px;
+  margin-top: -120px;
+  margin-right: -35px;
 }
 
 .cta-button {
@@ -137,25 +139,25 @@ main {
 }
 
 .id-card {
-    width: 250px;
-    height: 320px;
-    perspective: 1000px;
-    margin-top: 2rem;
-    position: relative;
-  }
-  
-  .id-strap {
-    width: 6px;
-    height: 80px;
-    background-color: #444;
-    position: absolute;
-    top: -80px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-radius: 3px;
-    z-index: -1;
-  }
-  
+  width: 250px;
+  height: 320px;
+  perspective: 1000px;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.id-strap {
+  width: 6px;
+  height: 80px;
+  background-color: #444;
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+  z-index: -1;
+}
+
 .id-card-inner {
   width: 100%;
   height: 100%;
@@ -267,8 +269,26 @@ main {
 }
 
 .detail-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.05);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card {
+  background: #fff;
+  border: 1px solid #dedede;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Projects Section */
@@ -286,11 +306,76 @@ main {
   padding: 2rem;
   text-align: center;
   transition: transform 0.2s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .project-card:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-hover-text {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(108, 108, 108);
+  font-family: Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  display: block;
+}
+
+.project-card:hover .project-hover-text {
+  opacity: 1;
+}
+
+/* Detail Hover Text */
+.detail-hover-text {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgb(108, 108, 108);
+  font-family: Arial, sans-serif;
+  font-weight: 300;
+  font-size: 0.9rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  pointer-events: none;
+  display: block;
+
+}
+
+.detail-card {
+  position: relative;
+  background: #fff;
+  border: 1px solid #dedede;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: auto; /* reset width to normal */
+  height: auto; /* reset height to normal */
+}
+
+.detail-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.detail-card:hover .detail-hover-text {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.detail-hover-text:hover {
+  color: var(--accent-color);
 }
 
 /* Contact Section */
@@ -299,6 +384,13 @@ main {
   grid-template-columns: 1fr 2fr;
   gap: 3rem;
   margin-top: 2rem;
+  position: relative;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .contact-form input,
@@ -319,6 +411,23 @@ main {
   border: none;
   border-radius: 8px;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+}
+
+#form-status,
+#form-error {
+  position: absolute;
+  width: max-content;
+  text-align: center;
+  left: 50%;
+  bottom: -30px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transform: translateX(-50%);
+  /* Ensure the messages are horizontally centered relative to the button */
+  margin-left: 0;
+  z-index: 2;
 }
 
 /* Footer */
@@ -350,12 +459,6 @@ footer {
 
 .social-links a:hover {
   color: white;
-}
-
-.footer-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 2rem 0;
 }
 
 /* Responsive Design */
@@ -419,4 +522,178 @@ section {
 .section-title {
   text-align: center;
   margin-top: 20px;
+}
+
+.about-text {
+  text-align: justify;
+  position: relative;
+}
+
+.wave {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease-in-out;
+}
+
+.wave:hover {
+  animation: wave-animation 1s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave-animation {
+  0% { transform: rotate(0deg); }
+  15% { transform: rotate(14deg); }
+  30% { transform: rotate(-8deg); }
+  40% { transform: rotate(14deg); }
+  50% { transform: rotate(-4deg); }
+  60% { transform: rotate(10deg); }
+  70% { transform: rotate(0deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.about-content p {
+  margin-bottom: 1rem;
+}
+
+.about-content p:not(:first-child):not(:nth-child(2)) {
+  display: none;
+}
+
+.about-content p:nth-child(2) {
+  display: block;
+  position: static;
+  max-height: none;
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.about-content {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  max-height: 3.2em; /* 2 lines * 1.6 line-height */
+  position: relative;
+  z-index: 0;
+  transition: max-height 1.2s ease-in-out, overflow 1.2s ease-in-out;
+}
+
+.about-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1.2em; /* height of fade */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--bg-color) 90%);
+  pointer-events: none;
+  z-index: 1;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.about-text.expanded .about-content {
+  display: block;
+  max-height: 1000px; /* large enough to show full content */
+  overflow: visible;
+  position: static;
+  z-index: auto;
+}
+
+.about-text.expanded .about-content::after {
+  display: none;
+  opacity: 0;
+}
+
+
+
+.about-text.expanded .about-content p {
+  display: block;
+  position: static;
+  max-height: none;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+
+.toggle-button {
+  background: none;
+  border: none;
+  color: var(--accent-color);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 1rem;
+  padding: 0;
+  margin: 0.5rem 0 1rem 0;
+}
+
+.toggle-button i {
+  transition: transform 0.3s ease;
+}
+
+.about-text.expanded .toggle-button i {
+  transition: transform 0.3s ease;
+}
+
+.about-text.expanded .toggle-button i {
+  transform: rotate(180deg);
+}
+
+/* Animation for page load and scroll */
+
+/* Initially hide elements to animate */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Animasi float untuk bagian home */
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Fade-in animation */
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Slide-in animation */
+.slide-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+/* Page load fade-in animation */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+body.page-loaded {
+  animation: pageFadeIn 1s ease forwards;
+}
+
+/* Fix for line 491: add missing closing brace for .slide-in class */
+.slide-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.info-item p, 
+.info-item a{
+  color: black;
+  text-decoration: none;
 }
