@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="custom-icons.css">
     <style>
         /* Custom CSS */
         body {
@@ -70,11 +71,43 @@
             padding: 1.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
             transition: transform 0.2s;
+            position: relative;
+            /* added for overlay positioning */
+            overflow: hidden;
+            /* hide overflow for overlay */
         }
 
         .media-card:hover {
             transform: translateY(-5px);
         }
+
+        /* Overlay for image details */
+        .media-card .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+            /* text-align removed to allow specific text alignment */
+            border-radius: 12px;
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+
+        /* Removed hover effect on media-card for overlay */
+        /* .media-card:hover .overlay {
+            opacity: 1;
+            pointer-events: auto;
+        } */
 
         .media-content {
             width: 100%;
@@ -97,8 +130,15 @@
             line-height: 1.5;
         }
 
+        /* Center caption text for MP4 and WebM media cards */
+        .media-card>p.caption:has(strong:contains("MP4")),
+        .media-card>p.caption:has(strong:contains("WebM")) {
+            text-align: center;
+        }
+
         .download-btn {
             display: inline-block;
+
             margin-top: 1rem;
             padding: 0.8rem 1.5rem;
             background-color: #0984e3;
@@ -120,56 +160,60 @@
         #roboto {
             font-family: 'Roboto', sans-serif;
         }
-        #arial{
+
+        #arial {
             font-family: Arial, sans-serif;
         }
-        #navbar{
+
+        #navbar {
             z-index: 1000;
         }
+
         /* Navigation */
-nav {
-  background: var(--bg-color);
-  padding: 1.5rem 5%;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 1000;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #eee;
-}
+        nav {
+            background: var(--bg-color);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
 
-.logo {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-left: 162px;
-  color: var(--primary-color);
-}
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-left: 162px;
+            color: var(--primary-color);
+        }
 
-.nav-links {
-  display: flex;
-  gap: 2rem;
-  list-style: none;
-  margin-right: 145px;
-}
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin-right: 145px;
+        }
 
-.nav-links a {
-  color: var(--text-color);
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1.2rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
-}
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+        }
 
-.nav-links a:hover {
-  background: #f8f9fa;
-  color: var(--accent-color);
-}
+        .nav-links a:hover {
+            background: #f8f9fa;
+            color: var(--accent-color);
+        }
 
-
-        
+        .info-icon {
+            color: #bbb !important;
+        }
     </style>
 </head>
 
@@ -177,586 +221,896 @@ nav {
     <nav id="navbar">
         <div class="logo">ARYO</div>
         <ul class="nav-links">
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#projects">Projects</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
         <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-      </nav>
+
+    </nav>
 
     <div class="container">
         <nav>
-      <div class="logo">ARYO</div>
-      <ul class="nav-links">
-        <li><a href="index.html#home">Home</a></li>
-        <li><a href="index.html#about">About</a></li>
-        <li><a href="index.html#projects">Projects</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-      <div class="menu-toggle"><i class="fas fa-bars"></i></div>
-    </nav>
-    
+            <div class="logo">ARYO</div>
+            <ul class="nav-links">
+                <li><a href="index.html#home">Beranda</a></li>
+                <li><a href="index.html#about">Tentang</a></li>
+                <li><a href="index.html#projects">Proyek</a></li>
+                <li><a href="index.html#contact">kontak</a></li>
+            </ul>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </nav>
 
-    <main>
-        <!-- Teks -->
-        <section id="teks">
-            <h2>Contoh Teks</h2>
 
-            <div class="media-grid">
-                <div class="media-card">
-                    <div class="text-content" id="inter" style="font-family: 'Times New Roman', serif;">
-                        <h3>Times New Roman</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Times New Roman<br>
-                            Contoh kombinasi heading dan body text dengan spacing yang konsisten
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <main>
+
+
+            <!-- Teks -->
+            <section id="teks">
+                <h2>Font</h2>
+
+                <div class="media-grid">
+                    <div class="media-card">
+                        <div class="text-content" id="inter" style="font-family: 'Times New Roman', serif;">
+                            <h3>Times New Roman</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Times New Roman<br>
+                                Contoh kombinasi heading dan body text dengan spacing yang konsisten
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="text-content" id="arial" style="font-family: Arial, sans-serif;">
+                            <h3>Arial</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Arial<br>
+                                Gaya sans-serif klasik dan bersih<br>
+                                Mudah dibaca di berbagai ukuran layar<br>
+                                Umum digunakan untuk tampilan formal dan profesional
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="text-content" id="roboto" style="font-family: 'Roboto', sans-serif;">
+                            <h3>Roboto</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Roboto<br>
+                                Kombinasi teks dengan ikon visual<br>
+                                Penggunaan bullet points dan numbering<br>
+                                Kontras warna untuk emphasis
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+
+                    <div class="media-card">
+                        <div class="text-content" id="helvetica" style="font-family: Helvetica, sans-serif;">
+                            <h3>Helvetica</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Helvetica<br>
+                                Gaya sans-serif modern dan bersih<br>
+                                Digunakan secara luas untuk desain minimalis
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <div class="text-content" id="calibri" style="font-family: Calibri, sans-serif;">
+                            <h3>Calibri</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Calibri<br>
+                                Font default Microsoft Office<br>
+                                Cocok untuk dokumen formal dan presentasi
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <div class="text-content" id="garamond" style="font-family: Garamond, serif;">
+                            <h3>Garamond</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Garamond<br>
+                                Gaya serif klasik<br>
+                                Sering digunakan untuk buku dan publikasi cetak
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <div class="text-content" id="monserat" style="font-family: 'Montserrat', sans-serif;">
+                            <h3>Monserat</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Monserat<br>
+                                Gaya sans-serif elegan<br>
+                                Cocok untuk branding dan desain modern
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <div class="text-content" id="georgia" style="font-family: Georgia, serif;">
+                            <h3>Georgia</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Georgia<br>
+                                Gaya serif yang mudah dibaca<br>
+                                Cocok untuk teks panjang di layar
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <div class="text-content" id="futura" style="font-family: Futura, sans-serif;">
+                            <h3>Futura</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Futura<br>
+                                Gaya geometris sans-serif<br>
+                                Digunakan untuk desain futuristik dan modern
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="media-card">
+                        <div class="text-content" id="opensans" style="font-family: 'Open Sans', sans-serif;">
+                            <h3>Open Sans</h3>
+                            <p class="caption">
+                                <strong>Font:</strong> Open Sans<br>
+                                Gaya sans-serif humanis<br>
+                                Cocok untuk web dan aplikasi digital
+                            </p>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="media-card">
-                    <div class="text-content" id="arial" style="font-family: Arial, sans-serif;">
-                        <h3>Arial</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Arial<br>
-                            Gaya sans-serif klasik dan bersih<br>
-                            Mudah dibaca di berbagai ukuran layar<br>
-                            Umum digunakan untuk tampilan formal dan profesional
+            <!-- Gambar -->
+            <section id="gambar">
+                <h2>Gambar</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.jpg" class="media-content" alt="JPEG Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #bbb; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>JPEG</strong><br>
+                            Ukuran: 1.2 MB<br>
+                            Tipe: image/jpeg<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar yang menggunakan kompresi lossy, ideal untuk fotografi dan gambar dengan
+                                banyak warna.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>JPEG</strong>
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.png" class="media-content" alt="PNG Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #bbb; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>PNG</strong><br>
+                            Ukuran: 900 KB<br>
+                            Tipe: image/png<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar dengan dukungan transparansi, cocok untuk grafik digital dan web.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>PNG</strong>
+                        </p>
+                    </div>
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.gif" class="media-content" alt="GIF Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>GIF</strong><br>
+                            Ukuran: 500 KB<br>
+                            Tipe: image/gif<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar animasi dengan dukungan transparansi sederhana, ideal untuk ikon dan
+                                animasi
+                                ringan.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>GIF</strong>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.bmp" class="media-content" alt="BMP Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>BMP</strong><br>
+                            Ukuran: 2 MB<br>
+                            Tipe: image/bmp<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar sederhana tanpa kompresi, cocok untuk penyimpanan gambar mentah.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>BMP</strong>
+                        </p>
+                    </div>
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.raw" class="media-content" alt="RAW Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>RAW</strong><br>
+                            Ukuran: 5 MB<br>
+                            Tipe: image/raw<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar mentah dari kamera digital, menyimpan data tanpa kompresi.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>RAW</strong>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.webp" class="media-content" alt="WebP Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay">
+                            <strong>WebP</strong><br>
+                            Ukuran: 1 MB<br>
+                            Tipe: image/webp<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar modern yang menawarkan kompresi tinggi tanpa mengorbankan kualitas.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>WebP</strong>
+                        </p>
+                    </div>
+                    <div class="media-card">
+                        <img src="gambar/Pemandangan.svg" class="media-content" alt="SVG Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay">
+                            <strong>SVG</strong><br>
+                            Ukuran: 300 KB<br>
+                            Tipe: image/svg+xml<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar vektor modern yang dapat diskalakan tanpa kehilangan kualitas. Cocok untuk
+                                logo dan ikon dengan ukuran file kecil. Bisa diedit langsung lewat kode dan mudah
+                                digunakan
+                                di web.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>SVG</strong>
+                        </p>
+                    </div>
+                    <div class="media-card" style="text-align: center; position: relative;">
+                        <img src="gambar/Pemandangan.tiff" class="media-content" alt="TIFF Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>TIFF</strong><br>
+                            Ukuran: 3 MB<br>
+                            Tipe: image/tiff<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar berkualitas tinggi yang sering digunakan untuk keperluan pencetakan
+                                profesional. Note: Format TIFF tidak bisa ditampilkan secara langsung di web browser.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>TIFF</strong>
+                        </p>
+                        <a href="gambar/Pemandangan.tiff" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download TIFF File</a>
+                    </div>
+                    <div class="media-card" style="text-align: center; position: relative;">
+                        <img src="gambar/Pemandangan.heic" class="media-content" alt="HEIF Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: -6px; right: 5px; color: #0984e3; font-size: 1.5rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>HEIF</strong><br>
+                            Ukuran: 2 MB<br>
+                            Tipe: image/heif<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format gambar efisien dengan kualitas tinggi dan ukuran file kecil, sering digunakan di
+                                perangkat modern. Note: Format HEIF tidak bisa ditampilkan secara langsung di web
+                                browser.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>HEIF</strong>
+                        </p>
+                        <a href="gambar/Pemandangan.heic" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download HEIF File</a>
+                    </div>
+                    <div class="media-card" style="min-height: 300px; text-align: center; position: relative;">
+                        <img src="gambar/Pemandangan.psd" class="media-content" alt="PSD Example">
+                        <div class="info-icon" title="About this image" tabindex="0" aria-label="About this image"
+                            style="position:absolute; top: -6px; right: 5px; color: #0984e3; font-size: 1.5rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>PSD</strong><br>
+                            Ukuran: 4 MB<br>
+                            Tipe: image/vnd.adobe.photoshop<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format asli Adobe Photoshop yang mendukung lapisan dan pengeditan kompleks. Note: Format
+                                PSD
+                                tidak bisa ditampilkan secara langsung di web browser.
+                            </p>
+                        </div>
+                        <p class="caption" style="text-align: center;">
+                            <strong>PSD</strong>
+                        </p>
+                        <a href="gambar/Pemandangan.psd" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download PSD File</a>
                     </div>
                 </div>
+            </section>
 
-                <div class="media-card">
-                    <div class="text-content" id="roboto" style="font-family: 'Roboto', sans-serif;">
-                        <h3>Roboto</h3>
+            <!-- Video -->
+            <section id="video">
+                <h2>Video</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <video controls autoplay class="media-content">
+                            <source src="video/shirohige.mp4" type="video/mp4">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #bbb; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+
+                            <strong>MP4</strong><br>
+
+                            Ukuran: 15 MB<br>
+                            Tipe: video/mp4<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video yang paling umum digunakan karena kompatibilitasnya yang luas dengan
+                                berbagai
+                                perangkat dan platform.
+                            </p>
+                        </div>
                         <p class="caption">
-                            <strong>Font:</strong> Roboto<br>
-                            Kombinasi teks dengan ikon visual<br>
-                            Penggunaan bullet points dan numbering<br>
-                            Kontras warna untuk emphasis
+                            <strong>MP4</strong>
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.avi" type="video/avi">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #bbb; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>AVI</strong><br>
+                            Ukuran: 20 MB<br>
+                            Tipe: video/avi<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video lama yang mendukung berbagai codec, sering digunakan untuk video
+                                berkualitas
+                                tinggi.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>AVI</strong>
+                        </p>
+                        <a href="video/shirohige.avi" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download AVI File</a>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls autoplay class="media-content">
+                            <source src="video/shirohige.webm" type="video/webm">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>WebM</strong><br>
+                            Ukuran: 18 MB<br>
+                            Tipe: video/webm<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video open-source yang dioptimalkan untuk web dengan kompresi tinggi dan kualitas
+                                baik.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>WebM</strong>
+                        </p>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.3gp" type="video/3gp">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>3GP</strong><br>
+                            Ukuran: 12 MB<br>
+                            Tipe: video/3gp<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video yang dirancang untuk perangkat seluler dengan ukuran file kecil.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>3GP</strong>
+                        </p>
+                        <a href="video/shirohige.3gp" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download 3GP File</a>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.mpeg" type="video/mpeg">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>MPEG</strong><br>
+                            Ukuran: 14 MB<br>
+                            Tipe: video/mpeg<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video standar untuk distribusi video digital dengan kompresi yang efisien.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>MPEG</strong>
+                        </p>
+                        <a href="video/shirohige.mpeg" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download MPEG File</a>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.mts" type="video/avchd">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>AVCHD</strong><br>
+                            Ukuran: 16 MB<br>
+                            Tipe: video/avchd<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video berkualitas tinggi yang sering digunakan untuk perekaman video HD.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>AVCHD</strong>
+                        </p>
+                        <a href="video/shirohige.mts" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download AVCHD File</a>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.flv" type="video/x-flv">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>FLV</strong><br>
+                            Ukuran: 13 MB<br>
+                            Tipe: video/x-flv<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video yang populer untuk streaming online, terutama di platform seperti YouTube.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>FLV</strong>
+                        </p>
+                        <a href="video/shirohige.flv" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download FLV File</a>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.wmv" type="video/x-ms-wmv">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>WMV</strong><br>
+                            Ukuran: 17 MB<br>
+                            Tipe: video/x-ms-wmv<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video yang dikembangkan oleh Microsoft, sering digunakan untuk aplikasi Windows.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>WMV</strong>
+                        </p>
+                        <a href="video/shirohige.wmv" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download WMV File</a>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.mov" type="video/quicktime">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>MOV</strong><br>
+                            Ukuran: 19 MB<br>
+                            Tipe: video/quicktime<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video yang dikembangkan oleh Apple, ideal untuk editing video profesional.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>MOV</strong>
+                        </p>
+                        <a href="video/shirohige.mov" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download MOV File</a>
+                    </div>
+
+                    <div class="media-card" style="text-align: center;">
+                        <video controls class="media-content">
+                            <source src="video/shirohige.mkv" type="video/x-matroska">
+                        </video>
+                        <div class="info-icon" title="About this video" tabindex="0" aria-label="About this video"
+                            style="position:absolute; top: 0px; right: 5px; color: #0984e3; font-size: 1.2rem; cursor: pointer;">
+                            <i class="fas fa-info-circle"></i>
+                        </div>
+                        <div class="overlay" style="opacity: 0; pointer-events: none;">
+                            <strong>MKV</strong><br>
+                            Ukuran: 21 MB<br>
+                            Tipe: video/x-matroska<br>
+                            <p style="text-align: justify; margin-top: 0.5rem;">
+                                Format video fleksibel yang mendukung berbagai codec dan fitur seperti subtitle.
+                            </p>
+                        </div>
+                        <p class="caption">
+                            <strong>MKV</strong>
+                        </p>
+                        <a href="video/shirohige.mkv" download class="download-btn"><i class="fas fa-download"
+                                style="color: white;"></i> Download MKV File</a>
                     </div>
                 </div>
+            </section>
 
-                <div class="media-card">
-                    <div class="text-content" id="helvetica" style="font-family: Helvetica, sans-serif;">
-                        <h3>Helvetica</h3>
+            <!-- Audio -->
+            <section id="audio">
+                <h2>Audio</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
+                                type="audio/mpeg">
+                        </audio>
                         <p class="caption">
-                            <strong>Font:</strong> Helvetica<br>
-                            Gaya sans-serif modern dan bersih<br>
-                            Digunakan secara luas untuk desain minimalis
+                            <strong>MP3</strong><br>
+                            Format audio yang paling umum digunakan karena kompatibilitasnya yang luas dengan berbagai
+                            perangkat dan platform. Contoh aplikasi: Spotify, iTunes, Windows Media Player.
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_WAV_1MG.wav"
+                                type="audio/wav">
+                        </audio>
+                        <p class="caption">
+                            <strong>WAV</strong><br>
+                            Format audio berkualitas tinggi yang sering digunakan untuk keperluan profesional dan
+                            rekaman studio. Contoh aplikasi: Adobe Audition, Audacity, GarageBand.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_FLAC_1MG.flac"
+                                type="audio/flac">
+                        </audio>
+                        <p class="caption">
+                            <strong>FLAC</strong><br>
+                            Format audio lossless yang menjaga kualitas suara asli tanpa kompresi data. Contoh aplikasi:
+                            VLC Media Player, Foobar2000, AIMP.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_OOG_1MG.ogg"
+                                type="audio/ogg">
+                        </audio>
+                        <p class="caption">
+                            <strong>OOG</strong><br>
+                            Format audio open-source yang mendukung kompresi berkualitas tinggi. Contoh aplikasi: VLC
+                            Media Player, Spotify, Google Chrome.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_WMA_1MG.wma"
+                                type="audio/x-ms-wma">
+                        </audio>
+                        <p class="caption">
+                            <strong>WMA</strong><br>
+                            Format audio yang dikembangkan oleh Microsoft, sering digunakan untuk streaming. Contoh
+                            aplikasi: Windows Media Player, Groove Music.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_AIFF_1MG.aiff"
+                                type="audio/aiff">
+                        </audio>
+                        <p class="caption">
+                            <strong>AIFF</strong><br>
+                            Format audio lossless yang sering digunakan pada perangkat Apple. Contoh aplikasi: iTunes,
+                            Logic Pro, GarageBand.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_DSD_1MG.dsd"
+                                type="audio/dsd">
+                        </audio>
+                        <p class="caption">
+                            <strong>DSD</strong><br>
+                            Format audio berkualitas tinggi yang digunakan untuk rekaman musik hi-fi. Contoh aplikasi:
+                            JRiver Media Center, Foobar2000.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_OPUS_1MG.opus"
+                                type="audio/opus">
+                        </audio>
+                        <p class="caption">
+                            <strong>Opus</strong><br>
+                            Format audio yang dirancang untuk streaming dengan kualitas tinggi dan ukuran file kecil.
+                            Contoh aplikasi: Discord, WhatsApp, Zoom.
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_ALAC_1MG.m4a"
+                                type="audio/mp4">
+                        </audio>
+                        <p class="caption">
+                            <strong>ALAC</strong><br>
+                            Format audio lossless yang dikembangkan oleh Apple untuk menjaga kualitas suara. Contoh
+                            aplikasi: iTunes, Apple Music.
+                        </p>
+                    </div>
+                    <div class="media-card">
+                        <audio controls class="media-content">
+                            <source
+                                src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_AAC_1MG.aac"
+                                type="audio/aac">
+                        </audio>
+                        <p class="caption">
+                            <strong>AAC</strong><br>
+                            Format audio dengan kompresi lossy yang menawarkan kualitas suara lebih baik dibandingkan
+                            MP3 pada bitrate yang sama. Contoh aplikasi: YouTube, Spotify, iTunes.
+                        </p>
                     </div>
                 </div>
-                <div class="media-card">
-                    <div class="text-content" id="calibri" style="font-family: Calibri, sans-serif;">
-                        <h3>Calibri</h3>
+            </section>
+
+            <!-- Animasi -->
+            <section id="animasi">
+                <h2>Animasi</h2>
+                <div class="media-grid">
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Toy Story 3 Clip.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
                         <p class="caption">
-                            <strong>Font:</strong> Calibri<br>
-                            Font default Microsoft Office<br>
-                            Cocok untuk dokumen formal dan presentasi
+                            <strong id="format">CGI/ 3D Animation</strong><br>
+                            Contoh: Toy Story<br>
+                            CGI adalah singkatan dari Computer-Generated Imagery, yaitu gambar atau animasi yang dibuat
+                            menggunakan komputer. Dalam konteks animasi dan film, CGI merujuk pada pembuatan efek
+                            visual, karakter, atau lingkungan secara digital dengan bantuan perangkat lunak
+                            komputer.<br>
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Naruto vs Pain __ story wa 30 detik.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">2D Animation</strong><br>
+                            Contoh: Naruto<br>
+                            Animasi 2D adalah jenis animasi yang dibuat dalam ruang dua dimensi, sering kali menggunakan
+                            teknik gambar tangan atau perangkat lunak digital untuk menciptakan gerakan dan
+                            karakter.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Shaun the Sheep Movie - Leaving The City _ Fandango Family.mp4"
+                                type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Stop Motion</strong><br>
+                            Contoh: Shaun The Sheep<br>
+                            Stop motion adalah teknik animasi di mana objek fisik digerakkan sedikit demi sedikit dan
+                            difoto untuk menciptakan ilusi gerakan.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Motion Graphic_ Ikhlas itu Berat - Ustadz Muhammad Nuzul Dzikri, Lc..mp4"
+                                type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Motion Graphics</strong><br>
+                            Contoh: Infografis Animasi<br>
+                            Motion graphics adalah animasi berbasis grafis yang sering digunakan untuk presentasi,
+                            iklan, atau video edukasi.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/2D Animation with Rotoscoping.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Rotoscoping</strong><br>
+                            Contoh: A Scanner Darkly<br>
+                            Rotoscoping adalah teknik animasi di mana gambar diambil dari rekaman video nyata dan
+                            digambar ulang untuk menciptakan efek animasi.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/A Paper Cutout Animation.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Cutout Animation</strong><br>
+                            Contoh: South Park<br>
+                            Cutout animation adalah teknik animasi di mana karakter dan objek dibuat dari potongan
+                            kertas atau bahan lain yang digerakkan secara manual.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Stop motion, claymation. First try..mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Claymation</strong><br>
+                            <br>
+                            Claymation adalah teknik stop motion yang menggunakan model tanah liat untuk menciptakan
+                            karakter dan adegan.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Ravioli _ Cel Animation Short Film _ 2022.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Cel Animation</strong><br>
+                            Contoh: Snow White and the Seven Dwarfs<br>
+                            Cel animation adalah teknik animasi tradisional di mana setiap frame digambar tangan pada
+                            lembaran transparan yang disebut cels.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Abstract Animation.mp4" type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Abstract Animation</strong><br>
+                            Contoh: Fantasia<br>
+                            Abstract animation adalah jenis animasi yang fokus pada bentuk, warna, dan gerakan tanpa
+                            narasi atau karakter tertentu.<br>
+                        </p>
+                    </div>
+
+                    <div class="media-card">
+                        <video controls class="media-content">
+                            <source src="Video/Pesan Terakhir Edward Newgate ( Shirohige ) One Piece.mp4"
+                                type="video/mp4">
+                            Browser Anda tidak mendukung video tag.
+                        </video>
+                        <p class="caption">
+                            <strong id="format">Anime Style</strong><br>
+                            Contoh: One Piece<br>
+                            Anime style adalah gaya animasi yang berasal dari Jepang, dikenal dengan karakteristik
+                            visual yang khas dan cerita yang mendalam.<br>
+                        </p>
                     </div>
                 </div>
-                <div class="media-card">
-                    <div class="text-content" id="garamond" style="font-family: Garamond, serif;">
-                        <h3>Garamond</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Garamond<br>
-                            Gaya serif klasik<br>
-                            Sering digunakan untuk buku dan publikasi cetak
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="text-content" id="monserat" style="font-family: 'Montserrat', sans-serif;">
-                        <h3>Monserat</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Monserat<br>
-                            Gaya sans-serif elegan<br>
-                            Cocok untuk branding dan desain modern
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="text-content" id="georgia" style="font-family: Georgia, serif;">
-                        <h3>Georgia</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Georgia<br>
-                            Gaya serif yang mudah dibaca<br>
-                            Cocok untuk teks panjang di layar
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="text-content" id="futura" style="font-family: Futura, sans-serif;">
-                        <h3>Futura</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Futura<br>
-                            Gaya geometris sans-serif<br>
-                            Digunakan untuk desain futuristik dan modern
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="media-card">
-                    <div class="text-content" id="opensans" style="font-family: 'Open Sans', sans-serif;">
-                        <h3>Open Sans</h3>
-                        <p class="caption">
-                            <strong>Font:</strong> Open Sans<br>
-                            Gaya sans-serif humanis<br>
-                            Cocok untuk web dan aplikasi digital
-                        </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- Gambar -->
-        <section id="gambar">
-            <h2>Gambar</h2>
-            <div class="media-grid">
-                <div class="media-card">
-                    <img src="img/sample_640×426.jpeg" class="media-content" alt="JPEG Example">
-                    <p class="caption">
-                        <strong>JPEG</strong><br>
-                        Format gambar yang menggunakan kompresi lossy, ideal untuk fotografi dan gambar dengan banyak warna.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/peci.png" class="media-content" alt="PNG Example">
-                    <p class="caption">
-                        <strong>PNG</strong><br>
-                        Format gambar dengan dukungan transparansi, cocok untuk grafik digital dan web.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif" class="media-content" alt="GIF Example">
-                    <p class="caption">
-                        <strong>GIF</strong><br>
-                        Format gambar animasi dengan dukungan transparansi sederhana, ideal untuk ikon dan animasi ringan.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/sample_640×426.tiff" class="media-content" alt="TIFF Example">
-                    <p class="caption">
-                        <strong>TIFF</strong><br>
-                        Format gambar berkualitas tinggi yang sering digunakan untuk keperluan pencetakan profesional. Note: Format TIFF tidak bisa ditampilkan secara langsung di web browser.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/sample_640×426.bmp" class="media-content" alt="BMP Example">
-                    <p class="caption">
-                        <strong>BMP</strong><br>
-                        Format gambar sederhana tanpa kompresi, cocok untuk penyimpanan gambar mentah. Note: Format BMP tidak bisa ditampilkan secara langsung di web browser.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/sample_640×426.jpeg" class="media-content" alt="RAW Example">
-                    <p class="caption">
-                        <strong>RAW</strong><br>
-                        Format gambar mentah dari kamera digital, menyimpan data tanpa kompresi. Note: Format RAW tidak bisa ditampilkan secara langsung di web browser.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/sample_640×426.jpeg" class="media-content" alt="HEIF Example">
-                    <p class="caption">
-                        <strong>HEIF</strong><br>
-                        Format gambar efisien dengan kualitas tinggi dan ukuran file kecil, sering digunakan di perangkat modern. Note: Format HEIF tidak bisa ditampilkan secara langsung di web browser.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/illustration_psd.jpeg" class="media-content" alt="PSD Example">
-                    <p class="caption">
-                        <strong>PSD</strong><br>
-                        Format asli Adobe Photoshop yang mendukung lapisan dan pengeditan kompleks. Note: Format PSD tidak bisa ditampilkan secara langsung di web browser.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/illustration_webp.jpeg" class="media-content" alt="WebP Example">
-                    <p class="caption">
-                        <strong>WebP</strong><br>
-                        Format gambar modern yang menawarkan kompresi tinggi tanpa mengorbankan kualitas. Note: Format WebP tidak bisa ditampilkan secara langsung di web browser.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <img src="img/illustration_webp.jpeg" class="media-content" alt="WebP Example">
-                    <p class="caption">
-                        <strong>SVG</strong><br>
-                        Format gambar vektor modern yang dapat diskalakan tanpa kehilangan kualitas. Cocok untuk logo dan ikon dengan ukuran file kecil. Bisa diedit langsung lewat kode dan mudah digunakan di web.
-                    </p>
-                </div>
-            </div>
-        </section>
+            <!-- Download Section -->
+            <section style="text-align: center; margin: 4rem 0;">
+                <a href="file/Laporan UTS Multimedia.pdf" download class="download-btn">
+                    📥 Unduh Laporan Lengkap (PDF)
+                </a>
+            </section>
+        </main>
 
-        <!-- Video -->
-        <section id="video">
-            <h2>Video</h2>
-            <div class="media-grid">
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4" type="video/mp4">
-                    </video>
-                    <p class="caption">
-                        <strong>MP4</strong><br>
-                        Format video yang paling umum digunakan karena kompatibilitasnya yang luas dengan berbagai perangkat dan platform.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/04/file_example_AVI_480_750kB.avi" type="video/avi">
-                    </video>
-                    <p class="caption">
-                        <strong>AVI</strong><br>
-                        Format video lama yang mendukung berbagai codec, sering digunakan untuk video berkualitas tinggi.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://media.w3.org/2010/05/sintel/trailer.webm" type="video/webm">
-                    </video>
-                    <p class="caption">
-                        <strong>WebM</strong><br>
-                        Format video open-source yang dioptimalkan untuk web dengan kompresi tinggi dan kualitas baik.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/3gp/240/big_buck_bunny_240p_1mb.3gp" type="video/3gp">
-                    </video>
-                    <p class="caption">
-                        <strong>3GP</strong><br>
-                        Format video yang dirancang untuk perangkat seluler dengan ukuran file kecil.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/mpeg/720/big_buck_bunny_720p_1mb.mpeg" type="video/mpeg">
-                    </video>
-                    <p class="caption">
-                        <strong>MPEG</strong><br>
-                        Format video standar untuk distribusi video digital dengan kompresi yang efisien.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/avchd/720/big_buck_bunny_720p_1mb.avchd" type="video/avchd">
-                    </video>
-                    <p class="caption">
-                        <strong>AVCHD</strong><br>
-                        Format video berkualitas tinggi yang sering digunakan untuk perekaman video HD.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/flv/720/big_buck_bunny_720p_1mb.flv" type="video/x-flv">
-                    </video>
-                    <p class="caption">
-                        <strong>FLV</strong><br>
-                        Format video yang populer untuk streaming online, terutama di platform seperti YouTube.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/wmv/720/big_buck_bunny_720p_1mb.wmv" type="video/x-ms-wmv">
-                    </video>
-                    <p class="caption">
-                        <strong>WMV</strong><br>
-                        Format video yang dikembangkan oleh Microsoft, sering digunakan untuk aplikasi Windows.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/mov/720/big_buck_bunny_720p_1mb.mov" type="video/quicktime">
-                    </video>
-                    <p class="caption">
-                        <strong>MOV</strong><br>
-                        Format video yang dikembangkan oleh Apple, ideal untuk editing video profesional.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="https://sample-videos.com/video123/mkv/720/big_buck_bunny_720p_1mb.mkv" type="video/x-matroska">
-                    </video>
-                    <p class="caption">
-                        <strong>MKV</strong><br>
-                        Format video fleksibel yang mendukung berbagai codec dan fitur seperti subtitle.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Audio -->
-        <section id="audio">
-            <h2>Audio</h2>
-            <div class="media-grid">
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-                    </audio>
-                    <p class="caption">
-                        <strong>MP3</strong><br>
-                        Format audio yang paling umum digunakan karena kompatibilitasnya yang luas dengan berbagai perangkat dan platform. Contoh aplikasi: Spotify, iTunes, Windows Media Player.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_WAV_1MG.wav" type="audio/wav">
-                    </audio>
-                    <p class="caption">
-                        <strong>WAV</strong><br>
-                        Format audio berkualitas tinggi yang sering digunakan untuk keperluan profesional dan rekaman studio. Contoh aplikasi: Adobe Audition, Audacity, GarageBand.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_FLAC_1MG.flac" type="audio/flac">
-                    </audio>
-                    <p class="caption">
-                        <strong>FLAC</strong><br>
-                        Format audio lossless yang menjaga kualitas suara asli tanpa kompresi data. Contoh aplikasi: VLC Media Player, Foobar2000, AIMP.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_OOG_1MG.ogg" type="audio/ogg">
-                    </audio>
-                    <p class="caption">
-                        <strong>OOG</strong><br>
-                        Format audio open-source yang mendukung kompresi berkualitas tinggi. Contoh aplikasi: VLC Media Player, Spotify, Google Chrome.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_WMA_1MG.wma" type="audio/x-ms-wma">
-                    </audio>
-                    <p class="caption">
-                        <strong>WMA</strong><br>
-                        Format audio yang dikembangkan oleh Microsoft, sering digunakan untuk streaming. Contoh aplikasi: Windows Media Player, Groove Music.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_AIFF_1MG.aiff" type="audio/aiff">
-                    </audio>
-                    <p class="caption">
-                        <strong>AIFF</strong><br>
-                        Format audio lossless yang sering digunakan pada perangkat Apple. Contoh aplikasi: iTunes, Logic Pro, GarageBand.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_DSD_1MG.dsd" type="audio/dsd">
-                    </audio>
-                    <p class="caption">
-                        <strong>DSD</strong><br>
-                        Format audio berkualitas tinggi yang digunakan untuk rekaman musik hi-fi. Contoh aplikasi: JRiver Media Center, Foobar2000.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_OPUS_1MG.opus" type="audio/opus">
-                    </audio>
-                    <p class="caption">
-                        <strong>Opus</strong><br>
-                        Format audio yang dirancang untuk streaming dengan kualitas tinggi dan ukuran file kecil. Contoh aplikasi: Discord, WhatsApp, Zoom.
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_ALAC_1MG.m4a" type="audio/mp4">
-                    </audio>
-                    <p class="caption">
-                        <strong>ALAC</strong><br>
-                        Format audio lossless yang dikembangkan oleh Apple untuk menjaga kualitas suara. Contoh aplikasi: iTunes, Apple Music.
-                    </p>
-                </div>
-                <div class="media-card">
-                    <audio controls class="media-content">
-                        <source src="https://file-examples.com/storage/fe9caaef9e642dbd39ac5d1/2017/11/file_example_AAC_1MG.aac" type="audio/aac">
-                    </audio>
-                    <p class="caption">
-                        <strong>AAC</strong><br>
-                        Format audio dengan kompresi lossy yang menawarkan kualitas suara lebih baik dibandingkan MP3 pada bitrate yang sama. Contoh aplikasi: YouTube, Spotify, iTunes.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Animasi -->
-        <section id="animasi">
-            <h2>Animasi</h2>
-            <div class="media-grid">
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Toy Story 3 Clip.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">CGI/ 3D Animation</strong><br>
-                        Contoh: Toy Story<br>
-                        CGI adalah singkatan dari Computer-Generated Imagery, yaitu gambar atau animasi yang dibuat menggunakan komputer. Dalam konteks animasi dan film, CGI merujuk pada pembuatan efek visual, karakter, atau lingkungan secara digital dengan bantuan perangkat lunak komputer.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Naruto vs Pain __ story wa 30 detik.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">2D Animation</strong><br>
-                        Contoh: Naruto<br>
-                        Animasi 2D adalah jenis animasi yang dibuat dalam ruang dua dimensi, sering kali menggunakan teknik gambar tangan atau perangkat lunak digital untuk menciptakan gerakan dan karakter.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Shaun the Sheep Movie - Leaving The City _ Fandango Family.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Stop Motion</strong><br>
-                        Contoh: Shaun The Sheep<br>
-                        Stop motion adalah teknik animasi di mana objek fisik digerakkan sedikit demi sedikit dan difoto untuk menciptakan ilusi gerakan.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Motion Graphic_ Ikhlas itu Berat - Ustadz Muhammad Nuzul Dzikri, Lc..mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Motion Graphics</strong><br>
-                        Contoh: Infografis Animasi<br>
-                        Motion graphics adalah animasi berbasis grafis yang sering digunakan untuk presentasi, iklan, atau video edukasi.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/2D Animation with Rotoscoping.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Rotoscoping</strong><br>
-                        Contoh: A Scanner Darkly<br>
-                        Rotoscoping adalah teknik animasi di mana gambar diambil dari rekaman video nyata dan digambar ulang untuk menciptakan efek animasi.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/A Paper Cutout Animation.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Cutout Animation</strong><br>
-                        Contoh: South Park<br>
-                        Cutout animation adalah teknik animasi di mana karakter dan objek dibuat dari potongan kertas atau bahan lain yang digerakkan secara manual.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Stop motion, claymation. First try..mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Claymation</strong><br>
-                        <br>
-                        Claymation adalah teknik stop motion yang menggunakan model tanah liat untuk menciptakan karakter dan adegan.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Ravioli _ Cel Animation Short Film _ 2022.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Cel Animation</strong><br>
-                        Contoh: Snow White and the Seven Dwarfs<br>
-                        Cel animation adalah teknik animasi tradisional di mana setiap frame digambar tangan pada lembaran transparan yang disebut cels.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Abstract Animation.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Abstract Animation</strong><br>
-                        Contoh: Fantasia<br>
-                        Abstract animation adalah jenis animasi yang fokus pada bentuk, warna, dan gerakan tanpa narasi atau karakter tertentu.<br>
-                    </p>
-                </div>
-
-                <div class="media-card">
-                    <video controls class="media-content">
-                        <source src="Video/Pesan Terakhir Edward Newgate ( Shirohige ) One Piece.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung video tag.
-                    </video>
-                    <p class="caption">
-                        <strong id="format">Anime Style</strong><br>
-                        Contoh: One Piece<br>
-                        Anime style adalah gaya animasi yang berasal dari Jepang, dikenal dengan karakteristik visual yang khas dan cerita yang mendalam.<br>
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Download Section -->
-        <section style="text-align: center; margin: 4rem 0;">
-            <a href="file/Laporan UTS Multimedia.pdf" download class="download-btn">
-                📥 Unduh Laporan Lengkap (PDF)
-            </a>
-        </section>
-    </main>
-
-    <!-- <footer>
+        <!-- <footer>
         <p>&copy; 2025 Aryo Abi Putra - UTS Multimedia</p>
     </footer> -->
-    <footer>
-        <div class="footer-content">
-          <div class="social-links">
-            <a href="#"><i class="fab fa-github"></i></a>
-            <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-facebook"></i></a>
-          </div>
-          <p>&copy; 2025 Aryo Abi Putra. All rights reserved.</p>
-        </div>
-      </footer>
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <!-- <a href="#"><i class="fab fa-linkedin"></i></a> -->
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+                <p>&copy; 2025 Aryo Abi Putra. All rights reserved.</p>
+            </div>
+        </footer>
 </body>
 
 </html>

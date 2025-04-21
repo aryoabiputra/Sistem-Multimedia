@@ -1,4 +1,3 @@
-  
 // Smooth scroll untuk navigasi
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
@@ -12,14 +11,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 document.addEventListener('DOMContentLoaded', () => {
   // Responsive menu toggle
   const menuToggle = document.querySelector('.menu-toggle');
-  const navLinks = document.querySelector('.nav-links');
+  const navLinksContainer = document.querySelector('.nav-links');
 
-  if (menuToggle && navLinks) {
+  if (menuToggle && navLinksContainer) {
     menuToggle.addEventListener('click', () => {
-      navLinks.classList.toggle('active');
+      navLinksContainer.classList.toggle('active');
     });
   }
 
+  //  Autoplay video hanya saat terlihat di viewport
+  const videos = document.querySelectorAll('video');
+
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  videos.forEach(video => {
+    videoObserver.observe(video);
+  });
   // Animasi skill bar saat terlihat di layar
   const skillBars = document.querySelectorAll('.skill-level');
 
@@ -55,9 +71,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const span = this.querySelector('span');
       if (aboutText.classList.contains('expanded')) {
-        span.textContent = 'Read Less';
+        span.textContent = 'Tutup';
       } else {
-        span.textContent = 'Read More';
+        span.textContent = 'Selengkapnya';
       }
     });
   }
@@ -86,7 +102,6 @@ document.addEventListener('DOMContentLoaded', () => {
     scrollObserver.observe(el);
   });
 
-
   // Also listen to hashchange to trigger animation on navigation
   window.addEventListener('hashchange', () => {
     const hash = window.location.hash;
@@ -107,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Contact form submission with EmailJS
   const contactForm = document.getElementById('contact-form');
   if (contactForm) {
-    contactForm.addEventListener('submit', function(event) {
+    contactForm.addEventListener('submit', function (event) {
       event.preventDefault();
       const status = document.getElementById('form-status');
       const error = document.getElementById('form-error');
@@ -117,13 +132,13 @@ document.addEventListener('DOMContentLoaded', () => {
       emailjs.init('O8Yzjn_YjxezneOsD');
 
       emailjs.sendForm('emailkearyo', 'emailkearyo', this)
-        .then(function(response) {
+        .then(function (response) {
           console.log('SUCCESS!', response.status, response.text);
           status.textContent = 'Pesan berhasil dikirim!';
           status.style.display = 'block';
           error.style.display = 'none';
           contactForm.reset();
-        }, function(err) {
+        }, function (err) {
           console.error('FAILED...', err);
           error.textContent = 'Terjadi kesalahan saat mengirim pesan.';
           status.style.display = 'none';
@@ -132,4 +147,50 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
   }
+
+  // Script untuk menandai menu navbar aktif berdasarkan URL saat ini
+  const currentPath = window.location.pathname;
+  const navLinksAll = document.querySelectorAll('.nav-links a');
+
+  navLinksAll.forEach(link => {
+    // Mendapatkan href dari link dan membuat URL absolut untuk perbandingan
+    let linkPath;
+    try {
+      linkPath = new URL(link.href).pathname;
+    } catch (e) {
+      linkPath = link.getAttribute('href');
+    }
+    if (linkPath === currentPath) {
+      link.classList.add('active');
+    }
+  });
+
+  // Scroll spy untuk menandai menu navbar saat scroll ke section tertentu
+  const sections = document.querySelectorAll('section[id]');
+  const navLinksArray = Array.from(navLinksAll);
+
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.5, // 50% dari section harus terlihat
+  };
+
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const sectionId = entry.target.id;
+        navLinksArray.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === `#${sectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      }
+    });
+  }, observerOptions);
+
+  sections.forEach(section => {
+    sectionObserver.observe(section);
+  });
 });

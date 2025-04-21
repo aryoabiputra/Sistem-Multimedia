@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -13,7 +14,7 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css" />
   <!-- Animate.css CDN -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
   <!-- EmailJS SDK -->
   <script src="https://cdn.emailjs.com/sdk/2.3.2/email.min.js"></script>
@@ -23,9 +24,12 @@
 
   <style>
     @keyframes float {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
+
       50% {
         transform: translateY(-20px);
       }
@@ -54,7 +58,8 @@
         <p class="hero-subtitle">Informatics Engineering Student</p>
         <a href="#projects" class="cta-button">Lihat Project Saya</a>
       </div>
-      <img src="img/FotoPorto.png" alt="Programming Illustration" class="hero-img animate__animated animate__slow animate__float float-animation" />
+      <img src="img/FotoPorto.png" alt="Programming Illustration"
+        class="hero-img animate__animated animate__slow animate__float float-animation" />
     </section>
 
 
@@ -65,9 +70,13 @@
         <div class="about-text animate-on-scroll hidden">
           <div class="about-content">
             <p>Halo! Saya mahasiswa Teknik Informatika dari Universitas Riau, berusia 20 tahun.
-            Saya sangat suka dengan dunia front-end, pembuatan game, dan desain grafis. Bagi saya, ngoding dan desain itu bukan cuma soal membuat sesuatu yang berjalan, tapi juga tentang menciptakan tampilan yang menarik dan mudah digunakan.
-            Selain belajar di kampus, saya sering mencoba proyek-proyek pribadi untuk mengasah kemampuan dan menambah pengalaman. Saya percaya bahwa terus belajar dan mengeksplorasi hal baru adalah kunci agar bisa berkembang di dunia teknologi yang selalu berubah ini.
-            Semoga karya-karya saya bisa menjadi bukti perjalanan saya dalam dunia digital!</p>
+              Saya sangat suka dengan dunia front-end, pembuatan game, dan desain grafis. Bagi saya, ngoding dan desain
+              itu bukan cuma soal membuat sesuatu yang berjalan, tapi juga tentang menciptakan tampilan yang menarik dan
+              mudah digunakan.
+              Selain belajar di kampus, saya sering mencoba proyek-proyek pribadi untuk mengasah kemampuan dan menambah
+              pengalaman. Saya percaya bahwa terus belajar dan mengeksplorasi hal baru adalah kunci agar bisa berkembang
+              di dunia teknologi yang selalu berubah ini.
+              Semoga karya-karya saya bisa menjadi bukti perjalanan saya dalam dunia digital!</p>
           </div>
 
           <button class="toggle-button"><span>Selengkapnya</span> <i class="fas fa-chevron-down"></i></button>
@@ -79,7 +88,7 @@
                 <span class="skill-percent">20%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-level" data-percent="20" ></div>
+                <div class="skill-level" data-percent="20"></div>
               </div>
             </div>
             <div class="skill-item">
@@ -97,7 +106,7 @@
                 <span class="skill-percent">15%</span>
               </div>
               <div class="skill-bar-container">
-                <div class="skill-level" data-percent="15" ></div>
+                <div class="skill-level" data-percent="15"></div>
               </div>
             </div>
           </div>
@@ -124,12 +133,12 @@
     <!-- Projects -->
     <section id="projects" class="section animate-on-scroll hidden">
       <h2 class="section-title">Proyek Saya</h2>
-      
+
       <div class="projects-grid">
         <div class="project-card animate-on-scroll hidden" onclick="location.href='uts-multimedia.html'">
           <i class="fas fa-file-pdf project-icon"></i>
-          <h3>Laporan UTS Multimedia</h3>
-          <p>Laporan UTS Sistem Multimedia yang berisi pembahasan tentang format teks, gambar, video, audio, dan animasi populer </p>
+          <h3>UTS Multimedia</h3>
+          <p>Berisi pembahasan tentang format teks, gambar, video, audio, dan animasi populer beserta laporannya</p>
           <span class="project-hover-text">Lihat Selengkapnya</span>
           <a href="file/Laporan UTS Multimedia.pdf" class="project-link" download>
             <i class="fas fa-download"></i> Download PDF
@@ -163,19 +172,25 @@
       <h2 class="section-title">Hubungi Saya</h2>
       <div class="contact-container animate-on-scroll hidden">
         <div class="contact-info animate-on-scroll hidden">
-          <div class="info-item"><i class="fas fa-envelope"></i><p>aryoputra606@gmail.com</p></div>
-          <div class="info-item"><i class="fab fa-github"></i><a href="https://github.com/aryoabi" target="_blank">github.com/aryoabi</a></div>
-          <div class="info-item"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/aryoabiputra/" target="_blank">@aryoabiputra</a></div>
+          <div class="info-item"><i class="fas fa-envelope"></i>
+            <p>aryoputra606@gmail.com</p>
+          </div>
+          <div class="info-item"><i class="fab fa-github"></i><a href="https://github.com/aryoabi"
+              target="_blank">github.com/aryoabi</a></div>
+          <div class="info-item"><i class="fab fa-instagram"></i><a href="https://www.instagram.com/aryoabiputra/"
+              target="_blank">@aryoabiputra</a></div>
         </div>
 
         <form id="contact-form" class="contact-form animate-on-scroll hidden">
           <div class="form-group"><input type="text" name="from_name" placeholder="Nama Lengkap" required /></div>
           <div class="form-group"><input type="email" name="from_email" placeholder="Email" required /></div>
-          <div class="form-group"><textarea name="message" rows="5" placeholder="Pesan Anda..." required></textarea></div>
+          <div class="form-group"><textarea name="message" rows="5" placeholder="Pesan Anda..." required></textarea>
+          </div>
           <button type="submit" class="cta-button">Kirim Pesan</button>
         </form>
         <p id="form-status" style="color: green; display: none; margin-top: 10px;">Pesan berhasil dikirim!</p>
-        <p id="form-error" style="color: red; display: none; margin-top: 10px;">Terjadi kesalahan saat mengirim pesan.</p>
+        <p id="form-error" style="color: red; display: none; margin-top: 10px;">Terjadi kesalahan saat mengirim pesan.
+        </p>
       </div>
     </section>
   </main>
@@ -193,4 +208,5 @@
     </div>
   </footer>
 </body>
+
 </html>

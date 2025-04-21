@@ -1,0 +1,10 @@
+/* Custom CSS to unify font-awesome icon sizes */
+i.fas, i.fab, div.info-icon i {
+  font-size: 1.2rem !important;
+}
+
+.info-icon:hover + .overlay {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  z-index: 10;
+  }

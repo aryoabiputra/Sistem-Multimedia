@@ -63,6 +63,11 @@ nav {
   transition: all 0.2s ease;
 }
 
+.nav-links a.active {
+  color: var(--accent-color);
+  font-weight: 600;
+}
+
 .nav-links a:hover {
   background: #f8f9fa;
   color: var(--accent-color);
@@ -119,10 +124,13 @@ main {
 }
 
 .cta-button:hover {
-  opacity: 0.9;
+  opacity: 0.7;
 }
 
 /* About Section */
+#about{
+  padding-top: 20px;
+}
 .about-grid {
   display: grid;
   grid-template-columns: 2fr 1fr;
@@ -282,16 +290,20 @@ main {
   text-align: center;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   position: relative;
-  overflow: hidden;
+  /* Removed overflow: hidden to prevent clipping */
 }
 
 .project-card:hover {
-  transform: translateY(-5px) scale(1.05);
+  transform: translateY(-5px) scale(1.01);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 /* Projects Section */
+#projects {
+  padding-top: 20px;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -310,11 +322,11 @@ main {
   overflow: hidden;
 }
 
-.project-card:hover {
-  transform: translateY(-5px) scale(1.05);
+/* .project-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+} */
 
 .project-hover-text {
   position: absolute;
@@ -322,17 +334,21 @@ main {
   left: 50%;
   transform: translateX(-50%);
   color: rgb(108, 108, 108);
-  font-family: Arial, sans-serif;
-  font-weight: 300;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   font-size: 0.9rem;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none;
   display: block;
 }
 
 .project-card:hover .project-hover-text {
   opacity: 1;
+}
+
+.project-hover-text:hover {
+  color: var(--accent-color);
+  cursor: pointer;
 }
 
 /* Detail Hover Text */
@@ -360,8 +376,10 @@ main {
   border-radius: 12px;
   padding: 2rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  width: auto; /* reset width to normal */
-  height: auto; /* reset height to normal */
+  width: auto;
+  /* reset width to normal */
+  height: auto;
+  /* reset height to normal */
 }
 
 .detail-card:hover {
@@ -379,6 +397,10 @@ main {
 }
 
 /* Contact Section */
+#contact {
+  padding-top: 20px;
+}
+
 .contact-container {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -541,42 +563,95 @@ section {
 }
 
 @keyframes wave-animation {
-  0% { transform: rotate(0deg); }
-  15% { transform: rotate(14deg); }
-  30% { transform: rotate(-8deg); }
-  40% { transform: rotate(14deg); }
-  50% { transform: rotate(-4deg); }
-  60% { transform: rotate(10deg); }
-  70% { transform: rotate(0deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  15% {
+    transform: rotate(14deg);
+  }
+
+  30% {
+    transform: rotate(-8deg);
+  }
+
+  40% {
+    transform: rotate(14deg);
+  }
+
+  50% {
+    transform: rotate(-4deg);
+  }
+
+  60% {
+    transform: rotate(10deg);
+  }
+
+  70% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
 
-.about-content p {
-  margin-bottom: 1rem;
+/* Download button centering inside media card */
+.download-btn {
+  display: inline-block;
+  margin: 1rem auto 0 auto;
+  background-color: #0984e3;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 0.6rem 1.2rem;
+  transition: background-color 0.3s;
+  width: fit-content;
 }
 
-.about-content p:not(:first-child):not(:nth-child(2)) {
-  display: none;
+.download-btn:hover {
+  background-color: #0871c0;
 }
 
-.about-content p:nth-child(2) {
-  display: block;
-  position: static;
-  max-height: none;
-  margin-top: 0;
-  margin-bottom: 1rem;
+.download-btn:not([href="file/Laporan UTS Multimedia.pdf"]) {
+  padding: 0.4rem 1rem;
 }
 
+.download-btn i.fas.fa-download {
+  margin-right: 0.5rem;
+  color: white;
+  font-size: 1rem;
+  vertical-align: middle;
+}
+
+/* Animation and visibility classes for scroll and float animations */
+.hidden {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  pointer-events: none;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-in, transform 0.6s ease-in;
+  pointer-events: auto;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite alternate;
+}
+
+/* Readmore animation for about-content */
 .about-content {
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;  
+  max-height: 3.2em;
+  /* approx 2 lines */
   overflow: hidden;
-  max-height: 3.2em; /* 2 lines * 1.6 line-height */
   position: relative;
-  z-index: 0;
-  transition: max-height 1.2s ease-in-out, overflow 1.2s ease-in-out;
+  transition: max-height 0.8s ease-in-out;
 }
 
 .about-content::after {
@@ -585,115 +660,49 @@ section {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 1.2em; /* height of fade */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--bg-color) 90%);
+  height: 1em;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), var(--bg-color));
   pointer-events: none;
-  z-index: 1;
-  transition: opacity 1.2s ease-in-out;
+  transition: opacity 0.8s ease-in-out;
 }
 
 .about-text.expanded .about-content {
-  display: block;
-  max-height: 1000px; /* large enough to show full content */
-  overflow: visible;
-  position: static;
-  z-index: auto;
+  max-height: 100vh;
+  /* expand to full height */
+  transition: max-height 1s ease-in-out;
 }
 
 .about-text.expanded .about-content::after {
-  display: none;
   opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
-
-
-.about-text.expanded .about-content p {
-  display: block;
-  position: static;
-  max-height: none;
-  margin-top: 0;
-  margin-bottom: 1rem;
-  -webkit-mask-image: none;
-  mask-image: none;
-}
-
+/* Toggle button styling */
 .toggle-button {
-  background: none;
+  background-color: var(--accent-color);
+  color: white;
   border: none;
-  color: var(--accent-color);
+  padding: 0.6rem 0.8rem;
+  /* reduced horizontal padding */
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  font-size: 1rem;
-  padding: 0;
-  margin: 0.5rem 0 1rem 0;
+  gap: 0.5rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}
+
+.toggle-button:hover {
+  background-color: #0861a8;
+  color: #e0e0e0;
 }
 
 .toggle-button i {
   transition: transform 0.3s ease;
 }
 
-.about-text.expanded .toggle-button i {
-  transition: transform 0.3s ease;
-}
-
-.about-text.expanded .toggle-button i {
+.toggle-button .fa-chevron-up {
   transform: rotate(180deg);
-}
-
-/* Animation for page load and scroll */
-
-/* Initially hide elements to animate */
-.hidden {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-}
-
-/* Animasi float untuk bagian home */
-.float-animation {
-  animation: float 3s ease-in-out infinite;
-}
-
-/* Fade-in animation */
-.fade-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* Slide-in animation */
-.slide-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-/* Page load fade-in animation */
-@keyframes pageFadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-body.page-loaded {
-  animation: pageFadeIn 1s ease forwards;
-}
-
-/* Fix for line 491: add missing closing brace for .slide-in class */
-.slide-in {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.info-item p, 
-.info-item a{
-  color: black;
-  text-decoration: none;
 }
